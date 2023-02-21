@@ -1209,8 +1209,8 @@ class GMMResults(LikelihoodModelResults):
 
         if has_optimal_weights: #has_optimal_weights:
             # TOD0 make has_optimal_weights depend on convergence or iter >2
-            cov = np.linalg.inv(np.dot(gradmoms.T,
-                                    np.dot(np.linalg.inv(omegahat), gradmoms)))
+            cov = np.linalg.inv(np.asmatrix(np.dot(gradmoms.T,
+                                    np.dot(np.linalg.inv(omegahat), gradmoms))))
         else:
             gw = np.dot(gradmoms.T, weights)
             gwginv = np.linalg.inv(np.dot(gw, gradmoms))
